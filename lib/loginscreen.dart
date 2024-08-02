@@ -23,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             TextField(
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 hintText: ('Enter email')
               ),
@@ -32,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
             ),
             TextField(
+              obscureText: true,
               decoration: InputDecoration(
                   hintText: ('Enter password')
               ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class stockcalculator extends StatefulWidget {
   static const String id='stockcalculatorscreen.dart';
@@ -15,12 +15,12 @@ class stockcalculator extends StatefulWidget {
 class _stockcalculatorState extends State<stockcalculator> {
 
   final auth=FirebaseAuth.instance;
-  // final firestore=FirebaseFirestore.instance;
+  final firestore=FirebaseFirestore.instance;
    User? loggedInUser;
    String symbol='';
   String buydate='';
   String selldate='';
-  String returns='';
+  String quantity='';
 
   void getCurrentUser()async{
     try {
@@ -123,10 +123,10 @@ class _stockcalculatorState extends State<stockcalculator> {
                         ),
                       ),
                       controller: symbolController,
-                      // onChanged: (value)
-                      // {
-                      //   symbol=value;
-                      // },
+                      onChanged: (value)
+                      {
+                        symbol=value;
+                      },
                     ),
                   ),
                 ),
@@ -148,10 +148,10 @@ class _stockcalculatorState extends State<stockcalculator> {
                         ),
                       ),
                       controller: buyDateController,
-                      // onChanged: (value)
-                      // {
-                      //   buydate=value;
-                      // },
+                      onChanged: (value)
+                      {
+                        buydate=value;
+                      },
                     ),
                   ),
                 ),
@@ -174,10 +174,10 @@ class _stockcalculatorState extends State<stockcalculator> {
                         ),
                       ),
                       controller: sellDateController,
-                      // onChanged: (value)
-                      // {
-                      //   selldate=value;
-                      // },
+                      onChanged: (value)
+                      {
+                        selldate=value;
+                      },
                     ),
                   ),
                 ),
@@ -199,10 +199,10 @@ class _stockcalculatorState extends State<stockcalculator> {
                         ),
                       ),
                       controller: quantityController,
-                      // onChanged: (value)
-                      // {
-                      //   returns=value;
-                      // },
+                      onChanged: (value)
+                      {
+                        quantity=value;
+                      },
                     ),
                   ),
                 ),
@@ -217,11 +217,11 @@ class _stockcalculatorState extends State<stockcalculator> {
                   child: Text('Calculate profit/loss'),
                   onPressed: (){
                     getData(symbolController.text,buyDateController.text,sellDateController.text,quantityController.text);
-                    // firestore.collection('stockdata').add(
-                    //     {'symbol':symbol,
-                    //     'buydate':buydate,
-                    //     'selldate':selldate,
-                    //     'return':returns,});
+                    firestore.collection('stockdata').add(
+                        {'symbol':symbol,
+                        'buydate':buydate,
+                        'selldate':selldate,
+                        'quantity':quantity,});
                   },
                 ),
               ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 
 class stockcalculator extends StatefulWidget {
   static const String id='stockcalculatorscreen.dart';
@@ -14,27 +14,27 @@ class stockcalculator extends StatefulWidget {
 
 class _stockcalculatorState extends State<stockcalculator> {
 
-  // final auth=FirebaseAuth.instance;
+  final auth=FirebaseAuth.instance;
   // final firestore=FirebaseFirestore.instance;
-  // User? loggedInUser;
-  // String symbol='';
-  // String buydate='';
-  // String selldate='';
-  // String returns='';
-  //
-  // void getCurrentUser()async{
-  //   try {
-  //     final user = auth.currentUser;
-  //     if (user != null) {
-  //       loggedInUser = user;
-  //       print(loggedInUser!.email);
-  //     }
-  //   }
-  //   catch(e)
-  //   {
-  //     print(e);
-  //   }
-  // }
+   User? loggedInUser;
+   String symbol='';
+  String buydate='';
+  String selldate='';
+  String returns='';
+
+  void getCurrentUser()async{
+    try {
+      final user = auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser!.email);
+      }
+    }
+    catch(e)
+    {
+      print(e);
+    }
+  }
 
   final TextEditingController symbolController=TextEditingController();
   final TextEditingController buyDateController = TextEditingController();

@@ -16,7 +16,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('                       Welcome'),
+        title: Center(child: Text('Welcome')),
         backgroundColor: Colors.lightBlue,
       ),
       body: Container(
@@ -25,34 +25,45 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStatePropertyAll<Color>(Colors.white),
+                SizedBox(
+                  height: 100,
+                  width: 200,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, LoginScreen.id);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll<Color>(Colors.white),
+                    ),
+                    child: Text('Login'),
                   ),
-                  child: Text('Login'),
                 ),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, RegistrationScreen.id);
-                    },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStatePropertyAll<Color>(Colors.white),
-                    ),
-                    child: Text('Register')),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, stockcalculator.id);
-                    },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStatePropertyAll<Color>(Colors.white),
-                    ),
-                    child: Text('Directly go to app')),
+                SizedBox(
+                  height:50,
+                ),
+                SizedBox(
+                  height: 100,
+                  width: 200,
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, RegistrationScreen.id);
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            WidgetStatePropertyAll<Color>(Colors.white),
+                      ),
+                      child: Text('Register')),
+                ),
+                // TextButton(
+                //     onPressed: () {
+                //       Navigator.pushNamed(context, stockcalculator.id);
+                //     },
+                //     style: ButtonStyle(
+                //       backgroundColor:
+                //           WidgetStatePropertyAll<Color>(Colors.white),
+                //     ),
+                //     child: Text('Directly go to app')),
               ],
             ),
           )),

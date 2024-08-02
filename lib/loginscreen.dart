@@ -10,7 +10,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  //final auth=FirebaseAuth.instance;
+  final auth=FirebaseAuth.instance;
   String email='';
   String password='';
   @override
@@ -42,16 +42,16 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextButton(onPressed:()async
             {
-              // try {
-              //   final newUser = await auth.signInWithEmailAndPassword(
-              //       email: email, password: password);
-              //   if (newUser != null) {
-              //     Navigator.pushNamed(context, stockcalculator.id);
-              //   }
-              // }
-              // catch (e) {
-              //   print(e);
-              // }
+              try {
+                final newUser = await auth.signInWithEmailAndPassword(
+                    email: email, password: password);
+                if (newUser != null) {
+                  Navigator.pushNamed(context, stockcalculator.id);
+                }
+              }
+              catch (e) {
+                print(e);
+              }
             },
               child: Text('Login'),
             ),],

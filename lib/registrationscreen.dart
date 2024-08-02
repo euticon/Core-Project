@@ -11,7 +11,7 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  //final auth=FirebaseAuth.instance;
+  final auth=FirebaseAuth.instance;
   String email='';
   String password='';
   @override
@@ -46,16 +46,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               TextButton(
                   onPressed:()async
                   {
-                  //   try{
-                  //   final user=await auth.createUserWithEmailAndPassword(email: email, password: password);
-                  //   if(user!=null)
-                  //     {
-                  //       Navigator.pushNamed(context, stockcalculator.id);
-                  //     }
-                  // }
-                  // catch(e)
-                  // {print (e);
-                  // }
+                    try{
+                    final user=await auth.createUserWithEmailAndPassword(email: email, password: password);
+                    if(user!=null)
+                      {
+                        Navigator.pushNamed(context, stockcalculator.id);
+                      }
+                  }
+                  catch(e)
+                  {print (e);
+                  }
 
                   }, child:Text('Register'))
             ],
